@@ -1,0 +1,10 @@
+<PlaebadItemModifiers>
+
+    <!-- Enable mods to be placed on the nailgun -->
+    <set xpath="/item_modifiers/item_modifier[@name='modGunTriggerGroupBurst3']/@installable_tags">firingMode,turretRanged,nailgun</set>
+    <set xpath="/item_modifiers/item_modifier[@name='modGunTriggerGroupAutomatic']/@installable_tags">firingMode,turretRanged,nailgun</set>
+    <set xpath="/item_modifiers/item_modifier[@name='modGunMagazineExtender']/@installable_tags">magazine,turretRanged,nailgun</set>
+    <set xpath="/item_modifiers/item_modifier[@name='modGunDrumMagazineExtender']/@installable_tags">drumMagazine,nailgun</set>
+    <set xpath="/item_modifiers/item_modifier[@name='modGunCrippleEm']/@installable_tags">ranged,nailgun</set>
+    
+</PlaebadItemModifiers>

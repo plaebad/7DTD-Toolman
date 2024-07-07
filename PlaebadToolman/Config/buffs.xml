@@ -1,0 +1,18 @@
+<PlaebadToolmanBuffs>
+
+    <!-- Add Bleed Effect counters for the Toolman progression -->
+    <insertAfter xpath="/buffs/buff[@name='buffStatusCheck01']/effect_group[1]/triggered_effect[28]">
+        <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$maxBleedCounter" operation="set" value="2">
+            <requirement name="ProgressionLevel" progression_name="perkToolman" operation="Equals" value="0"/></triggered_effect>
+        <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$maxBleedCounter" operation="set" value="3">
+            <requirement name="ProgressionLevel" progression_name="perkToolman" operation="Equals" value="1"/></triggered_effect>
+        <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$maxBleedCounter" operation="set" value="4">
+            <requirement name="ProgressionLevel" progression_name="perkToolman" operation="Equals" value="2"/></triggered_effect>
+        <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$maxBleedCounter" operation="set" value="5">
+            <requirement name="ProgressionLevel" progression_name="perkToolman" operation="Equals" value="3"/></triggered_effect>
+        <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$maxBleedCounter" operation="set" value="6">
+            <requirement name="ProgressionLevel" progression_name="perkToolman" operation="Equals" value="4"/></triggered_effect>
+        <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$maxBleedCounter" operation="set" value="7">
+            <requirement name="ProgressionLevel" progression_name="perkToolman" operation="Equals" value="5"/></triggered_effect>
+    </insertAfter>
+</PlaebadToolmanBuffs>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<Name value="PlaebadToolman" />
+	<DisplayName value="Plaebad Toolman" />
+	<Description value="Add Toolman perk and update construction tools to make them viable weapons" />
+	<Author value="Plaebad" />
+	<Version value="1.0.0" />
+	<Website value="" />
+</xml>

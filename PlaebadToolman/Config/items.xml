@@ -1,0 +1,110 @@
+<PlaebadToolmanItems>
+
+	<!-- Add Toolman perk tag to construction tools -->
+	<set xpath="/items/item[@name='meleeToolRepairT0StoneAxe']/property[@name='Tags']/@value">axe,melee,light,tool,longShaft,repairTool,miningTool,attStrength,perkMiner69r,perkMotherLode,perkTheHuntsman,canHaveCosmetic,harvestingSkill,perkToolman</set>
+	<set xpath="/items/item[@name='meleeToolRepairT0TazasStoneAxe']/property[@name='Tags']/@value">axe,melee,light,tool,longShaft,tazas,repairTool,miningTool,attStrength,perkMiner69r,perkMotherLode,perkTheHuntsman,canHaveCosmetic,harvestingSkill,perkToolman</set>
+	<set xpath="/items/item[@name='meleeToolAxeT1IronFireaxe']/property[@name='Tags']/@value">axe,melee,grunting,medium,tool,longShaft,attStrength,perkMiner69r,perkMotherLode,canHaveCosmetic,harvestingSkill,perkToolman</set>
+	<set xpath="/items/item[@name='meleeToolPickT1IronPickaxe']/property[@name='Tags']/@value">melee,grunting,medium,tool,longShaft,attStrength,perkMiner69r,perkMotherLode,miningTool,canHaveCosmetic,harvestingSkill,perktoolman</set>
+	<set xpath="/items/item[@name='meleeToolShovelT0StoneShovel']/property[@name='Tags']/@value">melee,grunting,medium,tool,longShaft,shovel,attStrength,perkMiner69r,perkMotherLode,canHaveCosmetic,harvestingSkill,perkToolman</set>
+	<set xpath="/items/item[@name='meleeToolShovelT1IronShovel']/property[@name='Tags']/@value">melee,grunting,medium,tool,longShaft,shovel,attStrength,perkMiner69r,perkMotherLode,canHaveCosmetic,harvestingSkill,perkToolman</set>
+	<set xpath="/items/item[@name='meleeToolShovelT2SteelShovel']/property[@name='Tags']/@value">melee,grunting,medium,tool,longShaft,shovel,attStrength,perkMiner69r,perkMotherLode,canHaveCosmetic,harvestingSkill,perkToolman</set>
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@name='Tags']/@value">weapon,ranged,tool,nailgun,sideAttachments,repairTool,attStrength,perkMiner69r,canHaveCosmetic,repairingSkill,magazine,drumMagazine,stock,firingMode,perkToolman</set>
+	<set xpath="/items/item[@name='meleeToolAxeT3Chainsaw']/property[@name='Tags']/@value">melee,heavy,tool,motorTool,attStrength,perkMiner69r,perkMotherLode,chainsaw,canHaveCosmetic,harvestingSkill,perkToolman</set>
+	<set xpath="/items/item[@name='meleeToolPickT3Auger']/property[@name='Tags']/@value">melee,heavy,tool,motorTool,attStrength,perkMiner69r,perkMotherLode,miningTool,canHaveCosmetic,harvestingSkill,perkToolman</set>
+
+	<!-- Update tags on harvest tools so that Big and Fast perk applies -->
+	<set xpath="/items/item[@name='meleeToolRepairT0StoneAxe']/effect_group[@name='meleeToolRepairT0StoneAxe']/passive_effect[@name='AttacksPerMinute']/@tags">perkMiner69r,axe,perkFlurryOfStrength</set>
+	<set xpath="/items/item[@name='meleeToolRepairT0TazasStoneAxe']/effect_group[@name='meleeToolRepairT0TazasStoneAxe']/passive_effect[@name='AttacksPerMinute']/@tags">perkMiner69r,axe,perkFlurryOfStrength</set>
+	<set xpath="/items/item[@name='meleeToolRepairT1ClawHammer']/effect_group[@name='meleeToolRepairT1ClawHammer']/passive_effect[@name='AttacksPerMinute']/@tags">perkMiner69r,perkFlurryOfStrength</set>
+	<set xpath="/items/item[@name='meleeToolAxeT1IronFireaxe']/effect_group[@name='meleeToolAxeT1IronFireaxe']/passive_effect[@name='AttacksPerMinute']/@tags">perkMiner69r,axe,perkFlurryOfStrength</set>
+	<set xpath="/items/item[@name='meleeToolAxeT2SteelAxe']/effect_group[@name='meleeToolAxeT2SteelAxe']/passive_effect[@name='AttacksPerMinute']/@tags">perkMiner69r,axe,perkFlurryOfStrength</set>
+	<set xpath="/items/item[@name='meleeToolPickT1IronPickaxe']/effect_group[@name='meleeToolPickT1IronPickaxe']/passive_effect[@name='AttacksPerMinute']/@tags">perkMiner69r,perkFlurryOfStrength</set>
+	<set xpath="/items/item[@name='meleeToolPickT2SteelPickaxe']/effect_group[@name='meleeToolPickT2SteelPickaxe']/passive_effect[@name='AttacksPerMinute']/@tags">perkMiner69r,perkFlurryOfStrength</set>
+	<set xpath="/items/item[@name='meleeToolShovelT0StoneShovel']/effect_group[@name='meleeToolShovelT0StoneShovel']/passive_effect[@name='AttacksPerMinute']/@tags">perkMiner69r,perkFlurryOfStrength</set>
+	<set xpath="/items/item[@name='meleeToolShovelT1IronShovel']/effect_group[@name='meleeToolShovelT1IronShovel']/passive_effect[@name='AttacksPerMinute']/@tags">perkMiner69r,perkFlurryOfStrength</set>
+	<set xpath="/items/item[@name='meleeToolShovelT2SteelShovel']/effect_group[@name='meleeToolShovelT2SteelShovel']/passive_effect[@name='AttacksPerMinute']/@tags">perkMiner69r,perkFlurryOfStrength</set>
+
+	<!-- Change class to Ranged to correct burst firing mode behavior -->
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@class='Action0']/property[@name='Class']/@value">Ranged</set>
+
+	<!-- Increase magazine size of the nailgun -->
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='BurstRoundCount']/@value">3</set>
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='MagazineSize']/@value">50</set>
+
+	<!-- Adjust nailgun damage and handling -->
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='DamageFalloffRange' and @operation='base_set']/@value">20</set>
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='MaxRange']/@value">40</set>
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='KickDegreesVerticalMin']/@value">-.25</set>
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='KickDegreesVerticalMax']/@value">.25</set>
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='KickDegreesHorizontalMin']/@value">-.3</set>
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='KickDegreesHorizontalMax']/@value">.3</set>
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='IncrementalSpreadMultiplier']/@value">1.5</set>
+
+	<!-- Enable mod slots on the nailgun -->
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='ModSlots']/@value">3,3,3,4,4,4</set>
+	<setattribute xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='ModSlots']" name="tier">1,2,3,4,5,6</setattribute>
+
+	<!-- Increase base entity damage and velocity of nails -->
+	<set xpath="/items/item[@name='resourceNail']/effect_group[@name='resourceNail']/passive_effect[@name='EntityDamage']/@value">25</set>
+	<set xpath="/items/item[@name='resourceNail']/effect_group[@name='resourceNail']/passive_effect[@name='ProjectileVelocity']/@value">45</set>
+
+	<!-- Add nails to ammo groups -->
+	<set xpath="/items/item[@name='resourceNail']/property[@name='Group']/@value">Resources,Ammo/Weapons,Basics,Ammo,Ranged Weapons</set>
+
+	<!-- Add steel nails to nailgun ammo -->
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@class='Action0']/property[@name='Magazine_items']/@value">resourceNail, resourceNailSteel</set>
+
+	<!-- Reduce stamina usage of the Impact Driver -->
+	<set xpath="/items/item[@name='meleeToolSalvageT3ImpactDriver']/effect_group[@name='meleeToolSalvageT3ImpactDriver']/passive_effect[@name='StaminaLoss']/@value">16</set>
+	<set xpath="/items/item[@name='meleeToolSalvageT3ImpactDriver']/effect_group[@name='Power Attack']/passive_effect[@name='StaminaLoss']/@value">28</set>
+
+	<!-- Add new item Steel Nail ammo -->
+	<insertAfter xpath="/items/item[@name='resourceNail']">
+		<item name="resourceNailSteel">
+			<property name="Meshfile" value="@:Other/Items/Tools/nailProjectilePrefab.prefab"/>
+			<property name="HoldType" value="45"/>
+			<property name="HandMeshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="MresourceScrapIron"/>
+			<property name="Stacknumber" value="1000"/> <!-- STK resource -->
+			<property name="EconomicValue" value="10"/>
+			<property name="EconomicBundleSize" value="10"/>
+			<property name="Tags" value="ammo,ranged,attStrength,perkMiner69r,perkPenetrator"/>
+			<property name="Group" value="Resources,Ammo/Weapons,Basics,Ammo,Ranged Weapons"/>
+			<property name="SoundPickup" value="nails_grab"/>
+			<property name="SoundPlace" value="nails_place"/>
+			<property name="CustomIcon" value="resourceNail"/>
+			<property name="CustomIconTint" value="ffb0b0"/>
+			<property class="Action1">
+				<property name="Class" value="Projectile"/>
+				<property name="Explosion.ParticleIndex" value="0"/>
+				<!-- no expl. -->
+				<property name="FlyTime" value="1"/>
+				<property name="LifeTime" value=".75"/>
+			</property>
+			<effect_group name="resourceNailSteel" tiered="false"> <!-- nail -->
+				<passive_effect name="EntityDamage" operation="base_set" value="42"/>
+				<passive_effect name="BlockDamage" operation="base_set" value="5"/>
+				<passive_effect name="TargetArmor" operation="perc_add" value="-.5"/>
+				<display_value name="dTargetArmor" value="-.5"/>
+				<passive_effect name="EntityPenetrationCount" operation="base_set" value="1"/>
+				<display_value name="dTargetPenetration" value="1"/>
+				<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="earth,metal,cloth"/>
+				<passive_effect name="DamageModifier" operation="perc_set" value=".1" tags="wood"/>
+				<passive_effect name="ProjectileVelocity" operation="base_set" value="55"/>
+				<passive_effect name="ProjectileStickChance" operation="perc_set" value="0"/>
+			</effect_group>
+			<effect_group name="perkPenetrator" tiered="false">
+				<passive_effect name="TargetArmor" operation="perc_add" value="-.1" tags="perkArchery">
+					<requirement name="ProgressionLevel" progression_name="perkPenetrator" operation="Equals" value="1"/></passive_effect>
+				<passive_effect name="TargetArmor" operation="perc_add" value="-.15" tags="perkArchery">
+					<requirement name="ProgressionLevel" progression_name="perkPenetrator" operation="Equals" value="2"/></passive_effect>
+				<passive_effect name="TargetArmor" operation="perc_add" value="-.2" tags="perkArchery">
+					<requirement name="ProgressionLevel" progression_name="perkPenetrator" operation="Equals" value="3"/></passive_effect>
+				<passive_effect name="TargetArmor" operation="perc_add" value="-.3" tags="perkArchery">
+					<requirement name="ProgressionLevel" progression_name="perkPenetrator" operation="Equals" value="4"/></passive_effect>
+			</effect_group>
+		</item>
+	</insertAfter>
+
+</PlaebadToolmanItems>
