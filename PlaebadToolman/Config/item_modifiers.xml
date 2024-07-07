@@ -1,10 +1,26 @@
 <PlaebadItemModifiers>
 
-    <!-- Enable mods to be placed on the nailgun -->
-    <set xpath="/item_modifiers/item_modifier[@name='modGunTriggerGroupBurst3']/@installable_tags">firingMode,turretRanged,nailgun</set>
-    <set xpath="/item_modifiers/item_modifier[@name='modGunTriggerGroupAutomatic']/@installable_tags">firingMode,turretRanged,nailgun</set>
-    <set xpath="/item_modifiers/item_modifier[@name='modGunMagazineExtender']/@installable_tags">magazine,turretRanged,nailgun</set>
-    <set xpath="/item_modifiers/item_modifier[@name='modGunDrumMagazineExtender']/@installable_tags">drumMagazine,nailgun</set>
-    <set xpath="/item_modifiers/item_modifier[@name='modGunCrippleEm']/@installable_tags">ranged,nailgun</set>
+    <!-- Enable installing mods on the claw hammer -->
+    <set xpath="/item_modifiers/item_modifier[@name='modMeleeStunBatonRepulsor']/@installable_tags">perkElectrocutioner,clawHammer</set>
+    <set xpath="/item_modifiers/item_modifier[@name='modMeleeClubBarbedWire']/@installable_tags">club,clawHammer</set>
+    <set xpath="/item_modifiers/item_modifier[@name='modMeleeClubMetalChain']/@installable_tags">club,clawHammer</set>
+    <set xpath="/item_modifiers/item_modifier[@name='modMeleeClubMetalSpikes']/@installable_tags">club,clawHammer</set>
+
+    <!-- Update positioning of Laser Sight and Weapon Flashlight for nailgun -->
+    <insertAfter xpath="/item_modifiers/item_modifier[@name='modGunLaserSight']/item_property_overrides[@name='gunHandgunT3DesertVulture ']">
+        <item_property_overrides name="meleeToolRepairT3Nailgun ">
+			<property name="SideOffset" value="0,0,.32"/>
+			<property name="SideRotation" value="0,0,-90"/>
+			<property name="SideScale" value="1,1,1"/>
+		</item_property_overrides>
+    </insertAfter>
+
+    <insertAfter xpath="/item_modifiers/item_modifier[@name='modGunFlashlight']/item_property_overrides[@name='gunBowT3CompoundCrossbow']">
+        <item_property_overrides name="meleeToolRepairT3Nailgun">
+			<property name="SideOffset" value="-.0386,.0382,.3519"/>
+			<property name="SideRotation" value="0,0,-90"/>
+			<property name="SideScale" value="1,1,1"/>
+		</item_property_overrides>
+    </insertAfter>
     
 </PlaebadItemModifiers>

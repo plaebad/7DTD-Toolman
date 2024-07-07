@@ -14,17 +14,40 @@ The following changes are currently implemented:
 - Axe, pickaxe, and shovel, chainsaw, and auger cause bleeding (based on Toolman progression)
 - Big and Fast perk applies to axe, pickaxe, and shovel
 - Nailgun damage and magazine size has been adjusted to be a more effective ranged weapon
-- Nailgun has been given 4 mod slots. Mods currently supported include:
+- Mod slots have been enabled on the nailgun and scale with item tier.
+  Mods currently supported include:
+    - Weapon Flashlight (does not currently work)
+    - Laser Sight (does not currently work)
+    - Trigger Group: Semi Auto
+    - Trigger Group: Burst
+    - Trigger Group: Full Auto
+    - Retracting Stock
     - Magazine Extender
     - Drum Magazine
+    - Cripple 'Em
+    - The Hunter
     - Rad Remover
-    - Burst-fire
-    - Fully automatic fire
-    - Folding Stock
-    - Cripple-em
 - Nails have increased damage
 - New recipe for Steel Nails (nailgun AP ammo) has been added
 - Penetrator perk applies to Nailgun
+- Damage and attack speed of the Claw Hammer has been adjusted for better melee combat
+- Hammer has been updated to support additional mods.
+  Mods current supported include:
+    - Barbed Wire
+    - Metal Spikes
+    - Metal Chain
+    - Burning Shaft
+    - Weighted Head
+    - Stun Repulsor (grants knockback effect on every 5th hit)
+    - Fortifying Grip
+    - Ergonomic Grip
+    - The Hunter
+    - Wood Splitter
+    - Iron Breaker
+    - Bunker Buster
+    - Grave Digger
+    - Structural Brace
+    - Rad Remover
 - Stamina usage has been reduced on the Impact Driver tool
 
 This mod can be added to or removed from existing saves without any known critical side effects.

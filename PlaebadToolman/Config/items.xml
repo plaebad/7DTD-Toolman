@@ -8,7 +8,7 @@
 	<set xpath="/items/item[@name='meleeToolShovelT0StoneShovel']/property[@name='Tags']/@value">melee,grunting,medium,tool,longShaft,shovel,attStrength,perkMiner69r,perkMotherLode,canHaveCosmetic,harvestingSkill,perkToolman</set>
 	<set xpath="/items/item[@name='meleeToolShovelT1IronShovel']/property[@name='Tags']/@value">melee,grunting,medium,tool,longShaft,shovel,attStrength,perkMiner69r,perkMotherLode,canHaveCosmetic,harvestingSkill,perkToolman</set>
 	<set xpath="/items/item[@name='meleeToolShovelT2SteelShovel']/property[@name='Tags']/@value">melee,grunting,medium,tool,longShaft,shovel,attStrength,perkMiner69r,perkMotherLode,canHaveCosmetic,harvestingSkill,perkToolman</set>
-	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@name='Tags']/@value">weapon,ranged,tool,nailgun,sideAttachments,repairTool,attStrength,perkMiner69r,canHaveCosmetic,repairingSkill,magazine,drumMagazine,stock,firingMode,perkToolman</set>
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@name='Tags']/@value">weapon,ranged,tool,nailgun,sideAttachments,repairTool,attStrength,perkMiner69r,canHaveCosmetic,repairingSkill,magazine,drumMagazine,stock,firingMode,perkToolman,attachmentsIncluded</set>
 	<set xpath="/items/item[@name='meleeToolAxeT3Chainsaw']/property[@name='Tags']/@value">melee,heavy,tool,motorTool,attStrength,perkMiner69r,perkMotherLode,chainsaw,canHaveCosmetic,harvestingSkill,perkToolman</set>
 	<set xpath="/items/item[@name='meleeToolPickT3Auger']/property[@name='Tags']/@value">melee,heavy,tool,motorTool,attStrength,perkMiner69r,perkMotherLode,miningTool,canHaveCosmetic,harvestingSkill,perkToolman</set>
 
@@ -44,6 +44,15 @@
 	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='ModSlots']/@value">3,3,3,4,4,4</set>
 	<setattribute xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='ModSlots']" name="tier">1,2,3,4,5,6</setattribute>
 
+	<!-- Update nailgun to work with weapon flashlight / laser sight mod -->
+	<insertAfter xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@name='SoundPlace']">
+		<property name="Attachments" value="meleeToolFlashlight02"/>
+		<property name="LightSource" value="lightSource"/> <!-- Start: Needed for the attachment flashlight -->
+		<property name="ActivateObject" value="Attachments/flashlight/lightSource"/>
+		<property name="AttachmentFlashlight" value="flashlight02"/> <!-- End: Needed for the attachment flashlight -->
+		<property name="LightValue" value=".45"/>
+	</insertAfter>
+
 	<!-- Increase base entity damage and velocity of nails -->
 	<set xpath="/items/item[@name='resourceNail']/effect_group[@name='resourceNail']/passive_effect[@name='EntityDamage']/@value">25</set>
 	<set xpath="/items/item[@name='resourceNail']/effect_group[@name='resourceNail']/passive_effect[@name='ProjectileVelocity']/@value">45</set>
@@ -57,6 +66,106 @@
 	<!-- Reduce stamina usage of the Impact Driver -->
 	<set xpath="/items/item[@name='meleeToolSalvageT3ImpactDriver']/effect_group[@name='meleeToolSalvageT3ImpactDriver']/passive_effect[@name='StaminaLoss']/@value">16</set>
 	<set xpath="/items/item[@name='meleeToolSalvageT3ImpactDriver']/effect_group[@name='Power Attack']/passive_effect[@name='StaminaLoss']/@value">28</set>
+
+	<!-- Update damage and handling on the hammer -->
+	<set xpath="/items/item[@name='meleeToolRepairT1ClawHammer']/effect_group[@name='meleeToolRepairT1ClawHammer']/passive_effect[@name='AttacksPerMinute']/@value">90</set>
+
+	<!-- Update hammer tags to allow installing the stun repulsor mod -->
+	<set xpath="/items/item[@name='meleeToolRepairT1ClawHammer']/property[@name='Tags']/@value">melee,light,tool,repairTool,longshaft,attStrength,perkMiner69r,perkMotherLode,canHaveCosmetic,repairingTools,clawHammer</set>
+
+	<!-- Add charges for stun repulsor mod to claw hammer -->
+	<insertAfter xpath="/items/item[@name='meleeToolRepairT1ClawHammer']/effect_group[@name='meleeToolRepairT1ClawHammer']">
+		<!-- Show spark effect if fully charged -->
+		<effect_group name="applySparkEffect">
+			<triggered_effect trigger="onSelfEquipStart" action="AddPart" part="Sparks" prefab="@:ParticleEffects/p_electric_shock_small.prefab" parentTransform="Handle" localPos="0,0,0" localRot="0,0,0">
+				<requirement name="CompareItemMetaFloat" operation="GTE" value="4" key="charge"/></triggered_effect>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePart" part="Sparks"/>
+		</effect_group>
+		<effect_group name="increase charges">
+			<!-- initialize metadata for "charge" on claw hammer, don't change value if already exists -->
+			<triggered_effect trigger="onSelfEquipStart" action="SetItemMetaFloat" change="0" relative="true" key="charge">
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/>
+			</triggered_effect>
+			
+			<!-- play stun baton sounds -->
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" mode="before" action="PlaySound" sound="stunbaton_hit1">
+				<requirement name="IsAlive" target="other"/>
+				<requirement name="!EntityTagCompare" target="other" tags="trader"/>
+				<requirement name="CompareItemMetaFloat" operation="Equals" value="0" key="charge"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" mode="before" action="PlaySound" sound="stunbaton_hit2">
+				<requirement name="IsAlive" target="other"/>
+				<requirement name="!EntityTagCompare" target="other" tags="trader"/>
+				<requirement name="CompareItemMetaFloat" operation="Equals" value="1" key="charge"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" mode="before" action="PlaySound" sound="stunbaton_hit3">
+				<requirement name="IsAlive" target="other"/>
+				<requirement name="!EntityTagCompare" target="other" tags="trader"/>
+				<requirement name="CompareItemMetaFloat" operation="Equals" value="2" key="charge"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" mode="before" action="PlaySound" sound="stunbaton_hit4">
+				<requirement name="IsAlive" target="other"/>
+				<requirement name="!EntityTagCompare" target="other" tags="trader"/>
+				<requirement name="CompareItemMetaFloat" operation="Equals" value="3" key="charge"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" mode="before" action="PlaySound" sound="stunbaton_hit5">
+				<requirement name="IsAlive" target="other"/>
+				<requirement name="!EntityTagCompare" target="other" tags="trader"/>
+				<requirement name="CompareItemMetaFloat" operation="Equals" value="4" key="charge"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/></triggered_effect>
+
+			<!-- potentially apply bonus charges from TechJunkie perk, by setting it to 3 the other actions below increase it to max charge -->
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" action="SetItemMetaFloat" change="3" relative="false" key="charge">
+				<requirement name="CompareItemMetaFloat" operation="LTE" value="3" key="charge"/>
+				<requirement name="ProgressionLevel" progression_name="perkTechJunkie6BatonCharge" operation="Equals" value="1"/>
+				<requirement name="IsAlive" target="other"/>
+				<requirement name="!EntityTagCompare" target="other" tags="trader"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/>
+			</triggered_effect>
+			
+			<!-- increase charges -->
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" action="SetItemMetaFloat" change="1" relative="true" key="charge">
+				<requirement name="IsAlive" target="other"/>
+				<requirement name="!EntityTagCompare" target="other" tags="trader"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/>
+			</triggered_effect>
+
+			<!-- add electric effect to claw hammer -->
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" action="AddPart" part="Sparks" prefab="@:ParticleEffects/p_electric_shock_small.prefab" parentTransform="Handle" localPos="0,0,0" localRot="0,0,0">
+				<requirement name="CompareItemMetaFloat" operation="Equals" value="4" key="charge"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/></triggered_effect>
+			
+			
+			<!-- trigger ragdoll events for fully charged claw hammer -->
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" action="Ragdoll" target="other" duration="@stunBatonDuration" force="350">
+				<requirement name="CompareItemMetaFloat" operation="Equals" value="5" key="charge"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/>
+				<requirement name="!EntityTagCompare" target="other" tags="trader"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" action="Ragdoll" target="otherAOE" range="1.1" duration="2.5" force="350" target_tags="zombie,animal">
+				<requirement name="CompareItemMetaFloat" operation="Equals" value="5" key="charge"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/>
+				<requirement name="!HasBuff" buff="buffDrugNerdTats"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" action="Ragdoll" target="otherAOE" range="1.1" duration="@stunBatonDuration" force="350" target_tags="zombie,animal">
+				<requirement name="CompareItemMetaFloat" operation="Equals" value="5" key="charge"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/>
+				<requirement name="HasBuff" buff="buffDrugNerdTats"/> <!-- if you have buffDrugNerdTats, use stun duration so zombies get up after stun is finished -->
+			</triggered_effect>
+			
+			<!-- reset charges -->
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" action="RemovePart" part="Sparks">
+				<requirement name="CompareItemMetaFloat" operation="Equals" value="5" key="charge"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" action="SetItemMetaFloat" change="0" relative="false" key="charge">
+				<requirement name="CompareItemMetaFloat" operation="Equals" value="5" key="charge"/>
+				<requirement name="HasBuff" buff="buffmodMeleeStunBatonRepulsor"/></triggered_effect>
+		</effect_group>
+	</insertAfter>
 
 	<!-- Add new item Steel Nail ammo -->
 	<insertAfter xpath="/items/item[@name='resourceNail']">
