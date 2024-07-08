@@ -2,9 +2,9 @@
 
     <!-- Add recipe for steel nails -->
     <insertAfter xpath="/recipes/recipe[@name='resourceNail']">
-        <recipe name="resourceNailSteel" count="25" material_based="true" craft_area="workbench" tags="workbenchCrafting">
+        <recipe name="resourceNailSteel" count="25" craft_time="240" craft_area="workbench" tags="workbenchCrafting">
             <ingredient name="resourceForgedSteel" count="1"/>
-            <ingredient name="unit_clay" count="1"/>
+            <ingredient name="unit_clay" count="25"/>
         </recipe>
     </insertAfter>
 
