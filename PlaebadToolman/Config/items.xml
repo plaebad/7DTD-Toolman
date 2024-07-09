@@ -24,7 +24,27 @@
 	<set xpath="/items/item[@name='meleeToolShovelT1IronShovel']/effect_group[@name='meleeToolShovelT1IronShovel']/passive_effect[@name='AttacksPerMinute']/@tags">perkMiner69r,perkFlurryOfStrength</set>
 	<set xpath="/items/item[@name='meleeToolShovelT2SteelShovel']/effect_group[@name='meleeToolShovelT2SteelShovel']/passive_effect[@name='AttacksPerMinute']/@tags">perkMiner69r,perkFlurryOfStrength</set>
 
-	<!-- Change class to Ranged to correct burst firing mode behavior -->
+	<!-- Add Target Armor Reduction to the Iron and Steel Pickaxe -->
+	<insertAfter xpath="/items/item[@name='meleeToolPickT1IronPickaxe']/effect_group[@name='meleeToolPickT1IronPickaxe']/passive_effect[@name='AttacksPerMinute']">
+		<passive_effect name="TargetArmor" operation="perc_add" value="-.4" tags="perkMiner69er"/>
+		<display_value name="dTargetArmor" value="-.4"/>
+	</insertAfter>
+	<insertAfter xpath="/items/item[@name='meleeToolPickT2SteelPickaxe']/effect_group[@name='meleeToolPickT2SteelPickaxe']/passive_effect[@name='AttacksPerMinute']">
+		<passive_effect name="TargetArmor" operation="perc_add" value="-.5" tags="perkMiner69er"/>
+		<display_value name="dTargetArmor" value="-.5"/>
+	</insertAfter>
+
+	<!-- Change Pickaxe display type to show armor reduction -->
+	<set xpath="/items/item[@name='meleeToolPickT1IronPickaxe']/property[@name='DisplayType']/@value">meleeSpear</set>
+	<set xpath="/items/item[@name='meleeToolPickT2SteelPickaxe']/property[@name='DisplayType']/@value">meleeSpear</set>
+
+	<!-- Increase entity damage of the pickaxes and shovel -->
+	<set xpath="/items/item[@name='meleeToolPickT1IronPickaxe']/effect_group[@name='meleeToolPickT1IronPickaxe']/passive_effect[@name='EntityDamage' and @operation='base_set']/@value">15</set>
+	<set xpath="/items/item[@name='meleeToolPickT2SteelPickaxe']/effect_group[@name='meleeToolPickT2SteelPickaxe']/passive_effect[@name='EntityDamage' and @operation='base_set']/@value">28</set>
+	<set xpath="/items/item[@name='meleeToolShovelT1IronShovel']/effect_group[@name='meleeToolShovelT1IronShovel']/passive_effect[@name='EntityDamage' and @operation='base_set']/@value">18</set>
+	<set xpath="/items/item[@name='meleeToolShovelT2SteelShovel']/effect_group[@name='meleeToolShovelT2SteelShovel']/passive_effect[@name='EntityDamage' and @operation='base_set']/@value">28</set>
+
+	<!-- Change nailgun action class to Ranged to correct burst firing mode behavior -->
 	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@class='Action0']/property[@name='Class']/@value">Ranged</set>
 
 	<!-- Increase magazine size of the nailgun -->
@@ -203,14 +223,22 @@
 				<passive_effect name="ProjectileVelocity" operation="base_set" value="55"/>
 				<passive_effect name="ProjectileStickChance" operation="perc_set" value="0"/>
 			</effect_group>
+			<effect_group name="BlockPenetration" tiered="false">
+				<passive_effect name="EntityPenetrationCount" operation="base_set" value="1" tags="perkPenetrator">
+					<requirement name="ItemHasTags" tags="perkPenetrator"/>
+					<!--<requirement name="ProgressionLevel" progression_name="perkPenetrator" operation="Equals" value="4"/>-->
+				</passive_effect>
+
+				<passive_effect name="BlockPenetrationFactor" operation="base_set" value="10000" tags="perkPenetrator"/>
+			</effect_group>
 			<effect_group name="perkPenetrator" tiered="false">
-				<passive_effect name="TargetArmor" operation="perc_add" value="-.1" tags="perkArchery">
+				<passive_effect name="TargetArmor" operation="perc_add" value="-.1" tags="perkPenetrator">
 					<requirement name="ProgressionLevel" progression_name="perkPenetrator" operation="Equals" value="1"/></passive_effect>
-				<passive_effect name="TargetArmor" operation="perc_add" value="-.15" tags="perkArchery">
+				<passive_effect name="TargetArmor" operation="perc_add" value="-.15" tags="perkPenetrator">
 					<requirement name="ProgressionLevel" progression_name="perkPenetrator" operation="Equals" value="2"/></passive_effect>
-				<passive_effect name="TargetArmor" operation="perc_add" value="-.2" tags="perkArchery">
+				<passive_effect name="TargetArmor" operation="perc_add" value="-.2" tags="perkPenetrator">
 					<requirement name="ProgressionLevel" progression_name="perkPenetrator" operation="Equals" value="3"/></passive_effect>
-				<passive_effect name="TargetArmor" operation="perc_add" value="-.3" tags="perkArchery">
+				<passive_effect name="TargetArmor" operation="perc_add" value="-.3" tags="perkPenetrator">
 					<requirement name="ProgressionLevel" progression_name="perkPenetrator" operation="Equals" value="4"/></passive_effect>
 			</effect_group>
 		</item>
