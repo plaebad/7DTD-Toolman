@@ -47,6 +47,17 @@
 	<!-- Change nailgun action class to Ranged to correct burst firing mode behavior -->
 	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@class='Action0']/property[@name='Class']/@value">Ranged</set>
 
+	<!-- Add damage scaling and bonuses for Nailgun -->
+	<insertAfter xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='ModSlots']">
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="EntityDamage" operation="base_add" value="5" tags="perkMiner69r"/>
+		<passive_effect name="EntityDamage" operation="perc_add" value="-.02,.02" tags="perkMiner69r"/>
+		<passive_effect name="EntityDamage" operation="perc_add" value=".05,.25" tier="2,6" tags="perkMiner69r"/>
+		<passive_effect name="BlockDamage" operation="perc_add" value="-.08,.08" tags="perkMiner69r"/>
+		<passive_effect name="BlockDamage" operation="perc_add" value=".15,.75" tier="2,6" tags="perkMiner69r"/>
+	</insertAfter>
+
 	<!-- Increase magazine size of the nailgun -->
 	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='BurstRoundCount']/@value">3</set>
 	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']/passive_effect[@name='MagazineSize']/@value">50</set>
