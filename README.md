@@ -49,6 +49,14 @@ The following changes are currently implemented:
     - Structural Brace
     - Rad Remover
 - Stamina usage has been reduced on the Impact Driver tool
+- Taza's Stone Axe has updated damage, block damage, and repair amount
+    - Slightly higher damage than steel axe
+    - Repair amount equivalent to nailgun (1000)
+    - Instant upgrade on blocks like the nailgun
+- Taza's Wrath buff applied when Taza's Stone Axe is equipped
+    - 100% ragdoll / knockback chance
+    - AOE ragdoll / knockback
+    - Increased dismemberment chance
 
 This mod can be added to or removed from existing saves without any known critical side effects.
 
