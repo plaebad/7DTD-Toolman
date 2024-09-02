@@ -255,4 +255,28 @@
 		</item>
 	</insertAfter>
 
+	<!-- Update Taza's Stone Axe mod slots and damage -->
+	<set xpath="/items/item[@name='meleeToolRepairT0TazasStoneAxe']/effect_group[@name='meleeToolRepairT0TazasStoneAxe']/passive_effect[@name='ModSlots']/@value">2,3,3,4,4,4</set>
+	<set xpath="/items/item[@name='meleeToolRepairT0TazasStoneAxe']/effect_group[@name='meleeToolRepairT0TazasStoneAxe']/passive_effect[@name='EntityDamage' and @operation='base_set']/@value">32</set>
+	<set xpath="/items/item[@name='meleeToolRepairT0TazasStoneAxe']/effect_group[@name='meleeToolRepairT0TazasStoneAxe']/passive_effect[@name='BlockDamage' and @operation='base_set']/@value">100</set>
+
+	<!-- Increase repair amount of Taza's Stone Axe -->
+	<append xpath="/items/item[@name='meleeToolRepairT0TazasStoneAxe']">
+		<property class="Action1">
+			<property name="Repair_amount" value="1000" />
+			<property name="Upgrade_hit_offset" value="-5"/>
+		</property>
+	</append>
+	<set xpath="/items/item[@name='meleeToolRepairT0TazasStoneAxe']/effect_group[@name='meleeToolRepairT0TazasStoneAxe']/display_value[@name='dBlockRepairAmount']/@value">1000</set>
+
+	<!-- Activate Taza's Wrath buff -->
+	<insertAfter xpath="/items/item[@name='meleeToolRepairT0TazasStoneAxe']/effect_group[@name='meleeToolRepairT0TazasStoneAxe']">
+		<effect_group name="TazasWrath">
+			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="buffTazasWrath">
+				<requirement name="!HasBuff" buff="buffTazasWrath"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffTazasWrath"/>
+		</effect_group>
+	</insertAfter>
+
 </PlaebadToolmanItems>

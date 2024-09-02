@@ -15,4 +15,28 @@
         <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$maxBleedCounter" operation="set" value="7">
             <requirement name="ProgressionLevel" progression_name="perkToolman" operation="Equals" value="5"/></triggered_effect>
     </insertAfter>
+
+    <!-- Update Taza's Wrath buff -->
+    <!-- Make Tazas Wrath buff continue while weapon equipped -->
+    <set xpath="/buffs/buff[@name='buffTazasWrath']/duration/@value">0</set>
+    <insertAfter xpath="/buffs/buff[@name='buffTazasWrath']/effect_group">
+        <effect_group name="TazasWrath">
+            <!-- Add ragdoll effect -->
+            <triggered_effect trigger="onSelfPrimaryActionRayHit" action="Ragdoll" target="other" duration="2.5" force="350">
+                <requirement name="HasBuff" buff="buffTazasWrath"/>
+                <requirement name="!EntityTagCompare" target="other" tags="trader"/>
+            </triggered_effect>
+            
+            <!-- Add ragdoll AOE effect -->
+            <triggered_effect trigger="onSelfPrimaryActionRayHit" action="Ragdoll" target="otherAOE" range="1.1" duration="2.5" force="350" target_tags="zombie,animal">
+                <requirement name="HasBuff" buff="buffTazasWrath"/>
+                <requirement name="!HasBuff" buff="buffDrugNerdTats"/>
+            </triggered_effect>
+
+            <!-- Add guaranteed dismemberment -->
+            <effect_group tiered="false">
+                <passive_effect name="DismemberChance" operation="base_add" value="100"/>
+            </effect_group>
+        </effect_group>
+    </insertAfter>
 </PlaebadToolmanBuffs>
