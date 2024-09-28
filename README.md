@@ -12,6 +12,7 @@ The following changes are currently implemented:
 
 - Axe, pickaxe, and shovel have knockdown effect (based on Toolman progression)
 - Axe, pickaxe, and shovel, chainsaw, and auger cause bleeding (based on Toolman progression)
+- Pickaxe has been given armor reduction
 - Big and Fast perk applies to axe, pickaxe, and shovel
 - Nailgun damage and magazine size has been adjusted to be a more effective ranged weapon
 - Mod slots have been enabled on the nailgun and scale with item tier.
